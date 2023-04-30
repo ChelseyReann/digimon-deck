@@ -3,6 +3,11 @@
   src: url(../public/PixelDigivolve-mOm9.ttf);
 }
 
+body {
+  background: linear-gradient(to bottom, #ADD8E6 55%, #FFAA33);
+  height: 100vh;
+}
+
 nav {
   font-family: "Digimon Font";
   display: flex;
