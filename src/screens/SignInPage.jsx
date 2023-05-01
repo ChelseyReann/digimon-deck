@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import './SignIn.css'
+import './SignUpPage.css'
 import { signIn } from '../services/users.js'
 import { useNavigate } from 'react-router-dom'
 
@@ -54,10 +54,10 @@ const SignIn = (props) => {
   const { email, password } = form
 
   return (
-    <div className='form-container'>
+    <div className='form-container' id="form">
       <h3>Sign In</h3>
       <form onSubmit={onSignIn}>
-        <label>Email</label>
+        <label>Email</label><br/>
         <input
           required
           type='text'
@@ -65,8 +65,8 @@ const SignIn = (props) => {
           value={email}
           placeholder='Enter Email'
           onChange={handleChange}
-        />
-        <label>Password</label>
+        /><br/><br/>
+        <label>Password</label><br/>
         <input
           required
           name='password'
@@ -74,7 +74,7 @@ const SignIn = (props) => {
           type='password'
           placeholder='Password'
           onChange={handleChange}
-        />
+        /><br/><br/>
         {renderError()}
       </form>
     </div>

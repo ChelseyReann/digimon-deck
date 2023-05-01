@@ -1,4 +1,4 @@
-import api from './apiConfig'
+//import api from './apiConfig'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 
@@ -46,7 +46,7 @@ export const changePassword = async (passwords, user) => {
 export const verifyUser = async () => {
   const token = localStorage.getItem('token')
   if (token) {
-    const res = await api.get('https://digimon-api.herokuapp.com/verify')
+    const res = await axios.get('https://digimon-api.herokuapp.com/verify')
     return res.data
   }
   return false
