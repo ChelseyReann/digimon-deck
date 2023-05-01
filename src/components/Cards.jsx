@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 export default function Cards() {
@@ -16,5 +15,3 @@ export default function Cards() {
     <div>
       <h1>{digimon}</h1>
     </div>
-  )
-}
