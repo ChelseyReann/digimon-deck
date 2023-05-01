@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user}/>
 
       <Routes>
         <Route path="/" element={<Home user={user}/>} />
