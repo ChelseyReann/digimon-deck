@@ -9,7 +9,7 @@ function App() {
       <NavBar />
 
       <Routes>
-        <Route path="/"></Route>
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/rules"></Route>
         <Route path="/cardsets"></Route>
         <Route path="/deckbuilder"></Route>
