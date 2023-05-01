@@ -3,7 +3,7 @@ import axios from "axios";
 let apiUrl;
 
 const apiUrls = {
-  production: "TBD",
+  production: "https://digimon-api.herokuapp.com",
   development: "http://127.0.0.1:3000/",
 };
 

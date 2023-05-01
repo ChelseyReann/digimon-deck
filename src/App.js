@@ -1,6 +1,5 @@
 import './App.css';
-
-import {Links, Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Home from './screens/Home.jsx';
 import NavBar from './components/NavBar.jsx';
@@ -10,6 +9,7 @@ import DeckBuilderPage from './screens/DeckBuilderPage.jsx';
 import SignUp from './screens/SignUpPage.jsx';
 import SignIn from './screens/SignInPage.jsx';
 import SignOut from './screens/SignOutPage.jsx';
+import { verifyUser } from './services/users.js';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user}/>
 
       <Routes>
         <Route path="/" element={<Home user={user}/>} />
