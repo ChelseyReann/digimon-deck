@@ -8,6 +8,9 @@ export default function NavBar() {
         <NavLink to="/cardsets" activeclassname="active-link">Card Sets</NavLink>
         <NavLink to="/deckbuilder" activeclassname="active-link">Deck Builder</NavLink>
         <NavLink to="deck" activeclassname="active-link">Deck</NavLink>
+        <NavLink to="/sign-up" activeclassname="active-link">Sign-up</NavLink>
+        <NavLink to="/sign-in" activeclassname="active-link">Sign-in</NavLink>
+
     </nav>
   )
 }
