@@ -13,7 +13,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 2rem;
+  font-size: 1.75rem;
   background-color: blue;
   padding-bottom: .5rem;
   position: sticky;

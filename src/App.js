@@ -6,8 +6,8 @@ import NavBar from './components/NavBar.jsx';
 import RulesPage from './screens/RulesPage.jsx';
 import CardSets from './screens/CardSetPage.jsx';
 import DeckBuilderPage from './screens/DeckBuilderPage.jsx';
-import SignUp from './screens/SignUpPage.jsx';
-import SignIn from './screens/SignInPage.jsx';
+import SignUp from './screens/SignUpPage/SignUpPage.jsx';
+import SignIn from './screens/SignInPage/SignInPage.jsx';
 import SignOut from './screens/SignOutPage.jsx';
 import { verifyUser } from './services/users.js';
 
