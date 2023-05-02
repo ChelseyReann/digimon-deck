@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function Bt2() {
     const [cards, setCards] = useState ([])
 
-    const cardSets = async () => {
+    const cardSets = async () => {                                             
         await axios.get("https://digimon-api.herokuapp.com/setname/BT01-03: Release Special Booster Ver.1.5")
         .then ((res) => setCards(res.data)) 
     }

@@ -11,6 +11,11 @@ import SignIn from './screens/SignInPage/SignInPage.jsx';
 import SignOut from './screens/SignOutPage.jsx';
 import { verifyUser } from './services/users.js';
 
+/*
+testing searchBar component
+ */
+import Search from "./components/Search.jsx"
+
 function App() {
 
   const [user, setUser] = useState(null)
@@ -38,6 +43,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn setUser={setUser}/>}/>
         <Route path="/sign-out" element={<SignOut setUser={setUser}/>} />
       </Routes>
+
     </>
   );
 }
