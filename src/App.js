@@ -44,7 +44,6 @@ function App() {
         <Route path="/sign-out" element={<SignOut setUser={setUser}/>} />
       </Routes>
 
-    <Search/>
     </>
   );
 }

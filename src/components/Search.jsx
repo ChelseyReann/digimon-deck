@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-export default function Search() {
+export default function Search(props) {
 
   let testArray = [
     {
@@ -26,8 +27,24 @@ export default function Search() {
     }
   ]
 
+useEffect(() => {
+  getInfo();
+},[])
+
+const getInfo = async() =>{
+  axios.get(``)
+  .then(response => {
+    console.log(response.data);
+    //store the info inside a state
+    // setPaintings(response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+}
+
   const [searchQuery, setSearchQuery] = useState('');
-                                                // replace with props
+                                        // replace with props
   const [searchResults, setSearchResults] = useState(testArray);
 
   function handleChange(e){
@@ -50,7 +67,7 @@ export default function Search() {
         <input type="text" value={searchQuery} placeholder='Search' onChange={handleChange}></input>
       </form>
       {
-        searchResults.map((result)=>(<div key={result.id}>{result.name}</div>))
+        searchResults.map((result)=>(<div age={`${result.age}`} key={result.id}>{result.name}</div>))
       }
     </div>
   )
