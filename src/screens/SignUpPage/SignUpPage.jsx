@@ -1,39 +1,42 @@
 import { useState } from 'react'
 import './SignUpPage.css'
-import { signIn } from '../services/users.js'
+import { signUp } from '../../services/users.js'
 import { useNavigate } from 'react-router-dom'
 
-const SignIn = (props) => {
+const SignUp = (props) => {
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
+    username: '',
     email: '',
     password: '',
+    passwordConfirmation: '',
     isError: false,
     errorMsg: '',
   })
 
-  const handleChange = (event) => {
+  const handleChange = (event) =>
     setForm({
       ...form,
       [event.target.name]: event.target.value,
     })
-  }
 
-  const onSignIn = async (event) => {
+  const onSignUp = async (event) => {
     event.preventDefault()
     const { setUser } = props
     try {
-      const user = await signIn(form)
+      const user = await signUp(form)
       setUser(user)
       navigate('/')
     } catch (error) {
       console.error(error)
       setForm({
-        isError: true,
-        errorMsg: 'Invalid Credentials',
+        username: '',
         email: '',
         password: '',
+        passwordConfirmation: '',
+        isError: true,
+        errorMsg: 'Sign Up Details Invalid',
       })
     }
   }
@@ -47,23 +50,32 @@ const SignIn = (props) => {
         </button>
       )
     } else {
-      return <button type='submit'>Sign In</button>
+      return <button type='submit'>Sign Up</button>
     }
   }
 
-  const { email, password } = form
+  const { username, email, password, passwordConfirmation } = form
 
   return (
     <div className='form-container' id="form">
-      <h3>Sign In</h3>
-      <form onSubmit={onSignIn}>
-        <label>Email</label><br/>
+      <h3>Sign Up</h3>
+      <form onSubmit={onSignUp}>
+        <label>Username</label><br/>
         <input
           required
           type='text'
+          name='username'
+          value={username}
+          placeholder='Enter username'
+          onChange={handleChange}
+        /><br/><br/>
+        <label>Email address</label><br/>
+        <input
+          required
+          type='email'
           name='email'
           value={email}
-          placeholder='Enter Email'
+          placeholder='Enter email'
           onChange={handleChange}
         /><br/><br/>
         <label>Password</label><br/>
@@ -75,10 +87,19 @@ const SignIn = (props) => {
           placeholder='Password'
           onChange={handleChange}
         /><br/><br/>
+        <label>Password Confirmation</label><br/>
+        <input
+          required
+          name='passwordConfirmation'
+          value={passwordConfirmation}
+          type='password'
+          placeholder='Confirm Password'
+          onChange={handleChange}
+        /><br/><br/>
         {renderError()}
       </form>
     </div>
   )
 }
 
-export default SignIn
+export default SignUp
