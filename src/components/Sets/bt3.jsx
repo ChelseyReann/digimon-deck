@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-export default function bt3() {
+export default function Bt3() {
     const [cards, setCards] = useState ([])
 
     useEffect(() => {

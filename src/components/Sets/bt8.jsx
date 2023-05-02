@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-export default function bt8() {
+export default function Bt8() {
     const [cards, setCards] = useState ([])
 
     useEffect(() => {

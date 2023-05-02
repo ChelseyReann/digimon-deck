@@ -2,21 +2,22 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-export default function bt1() {
+export default function Bt1() {
     const [cards, setCards] = useState ([])
 
-    useEffect(() => {
-        const cardSets = async () => {
-            await axios.get("https://digimon-api.herokuapp.com/setname/BT-01: Booster New Evolution")
-            setCards(response)
-        }
-    }, [])
+    const cardSets = async () => {
+        await axios.get("https://digimon-api.herokuapp.com/setname/BT-01: Booster New Evolution")
+        .then ((res) => setCards(res.data)) 
+    }
 
+    useEffect(() => {
+       cardSets()
+        }, [])
 
   return (
     <div>
         {cards.map ((card, index) => (
-            <div key={index} style={{backgroundImage:`url(${card.image_url})`}}></div>
+            <div key={index} style={{backgroundImage:`url(${card.image_url})`}}>{card.name}</div>
         ))}
     </div>
   )

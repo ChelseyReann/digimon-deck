@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-export default function st2() {
+export default function St2() {
     const [cards, setCards] = useState ([])
 
     useEffect(() => {
