@@ -15,10 +15,17 @@ import { verifyUser } from './services/users.js';
 testing searchBar component
  */
 import Search from "./components/Search.jsx"
+import axios from 'axios';
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const [cards, setCards] = useState([])
+
+  const getInfo = async() =>{
+    axios.get('https://digimon-api.herokuapp.com/')
+    .then((res)=>setCards(res.data))
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,8 +33,10 @@ function App() {
       user ? setUser(user) : setUser(null)
     }
     fetchUser()
+    getInfo()
   }, [])
 
+  
 
   return (
     <>
@@ -44,6 +53,7 @@ function App() {
         <Route path="/sign-out" element={<SignOut setUser={setUser}/>} />
       </Routes>
 
+    <Search cards={cards}></Search>
     </>
   );
 }

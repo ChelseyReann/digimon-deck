@@ -27,21 +27,10 @@ export default function Search(props) {
     }
   ]
 
-useEffect(() => {
-  getInfo();
-},[])
 
-const getInfo = async() =>{
-  axios.get(``)
-  .then(response => {
-    console.log(response.data);
-    //store the info inside a state
-    // setPaintings(response.data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-}
+
+console.log(props.cards)
+
 
   const [searchQuery, setSearchQuery] = useState('');
                                         // replace with props
