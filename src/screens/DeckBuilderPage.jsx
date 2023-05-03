@@ -24,7 +24,7 @@ export default function DeckBuilder({ selectedCard }) {
       set_name: selectedCard.set_name,
     };
     let addedCard = await axios.post(
-      "https://digimon-api.herokuapp.com/addDeck",
+      "https://digimon-api.herokuapp.com/addCard",
       data
     );
   };

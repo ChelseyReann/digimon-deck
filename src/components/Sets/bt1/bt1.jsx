@@ -2,15 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./bt1.css";
 
-export default function Bt1(props) {
+export default function Bt1({ user, setname }) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
-
-  //   const { handleCardSelect } = props;
-
-  const handleCardSelect = (selectedCard) => {
-    setCards([cards, selectedCard]);
-  };
 
   const openModal = (e, card) => {
     e.preventDefault();
@@ -21,11 +15,18 @@ export default function Bt1(props) {
     setSelectedCard(null);
   };
 
+  const addCard = async (cardId) => {
+    await axios.post("https://digimon-api.herokuapp.com/addCard", {
+      cardId: cardId,
+      userId: user._id,
+    });
+  };
+
   useEffect(() => {
     const cardSets = async () => {
       try {
         const res = await axios.get(
-          `https://digimon-api.herokuapp.com/setname/${props.setname}`
+          `https://digimon-api.herokuapp.com/setname/${setname}`
         );
         setCards(res.data);
       } catch (error) {
@@ -33,7 +34,7 @@ export default function Bt1(props) {
       }
     };
     cardSets();
-  }, [props.setname]);
+  }, [setname]);
 
   useEffect(() => {
     if (selectedCard) {
@@ -47,7 +48,7 @@ export default function Bt1(props) {
     <div className="cards-container" onClick={closeModal}>
       {cards.map((card, index) => (
         <div
-          onClick={() => handleCardSelect()}
+          onClick={() => addCard(card._id)}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}

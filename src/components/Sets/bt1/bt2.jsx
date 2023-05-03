@@ -18,7 +18,7 @@ export default function Bt2(props) {
   useEffect(() => {
     const cardSets = async () => {
       try {
-        const res = await axios.get(`https://digimon-api.herokuapp.com/deck/`);
+        const res = await axios.get(`https://digimon-api.herokuapp.com/deck1/`);
         setCards(res.data);
       } catch (error) {
         console.error(error);
@@ -39,7 +39,7 @@ export default function Bt2(props) {
     <div className="cards-container" onClick={closeModal}>
       {cards.map((card, index) => (
         <div
-          onClick={() => handleCardSelect()}
+          //   onClick={}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
