@@ -85,7 +85,7 @@ export default function CardSetPage() {
       <Bt1 setname={"ST-4: Starter Deck Giga Green"} />
       <br />
       <br />
-      <h2>Stater Deck: Machine Black</h2>
+      <h2>Starter Deck: Machine Black</h2>
       <br />
       <Bt1 setname={"ST-5: Starter Deck Machine Black"} />
       <br />

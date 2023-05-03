@@ -2,15 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./bt1.css";
 
-export default function Bt1(props) {
+export default function Bt2(props) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
-
-  //   const { handleCardSelect } = props;
-
-  const handleCardSelect = (selectedCard) => {
-    setCards([cards, selectedCard]);
-  };
 
   const openModal = (e, card) => {
     e.preventDefault();
@@ -24,16 +18,14 @@ export default function Bt1(props) {
   useEffect(() => {
     const cardSets = async () => {
       try {
-        const res = await axios.get(
-          `https://digimon-api.herokuapp.com/setname/${props.setname}`
-        );
+        const res = await axios.get(`https://digimon-api.herokuapp.com/deck/`);
         setCards(res.data);
       } catch (error) {
         console.error(error);
       }
     };
     cardSets();
-  }, [props.setname]);
+  }, []);
 
   useEffect(() => {
     if (selectedCard) {
