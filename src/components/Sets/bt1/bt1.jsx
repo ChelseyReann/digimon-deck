@@ -18,7 +18,7 @@ export default function Bt1({ user, setname }) {
   const addCard = async (cardId) => {
     await axios.post("https://digimon-api.herokuapp.com/addCard", {
       cardId: cardId,
-      userId: user._id,
+      userId: user.id,
     });
   };
 
@@ -44,8 +44,10 @@ export default function Bt1({ user, setname }) {
     }
   }, [selectedCard]);
 
+  console.log(cards[0]);
+
   return (
-    <div className="cards-container" onClick={closeModal}>
+    <div className="cards-container">
       {cards.map((card, index) => (
         <div
           onClick={() => addCard(card._id)}

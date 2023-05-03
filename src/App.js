@@ -28,6 +28,8 @@ function App() {
     fetchUser();
   }, []);
 
+  console.log(user);
+
   return (
     <>
       <NavBar user={user} />
@@ -36,8 +38,12 @@ function App() {
         <Route path="/" element={<Home user={user} />} />
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/cardsets" element={<CardSets user={user} />} />
-        <Route path="/deckbuilder" element={<DeckBuilderPage />} />
-        <Route path="/deck" element={<Bt2 />} />
+        {user ? (
+          <Route
+            path={`/deck1/${user.id}`}
+            element={<DeckBuilderPage user={user} />}
+          />
+        ) : null}
         <Route path="/sign-up" element={<SignUp setUser={setUser} />} />
         <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
         <Route path="/sign-out" element={<SignOut setUser={setUser} />} />
