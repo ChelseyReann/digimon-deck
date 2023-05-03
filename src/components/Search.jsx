@@ -4,28 +4,7 @@ import axios from 'axios'
 
 export default function Search(props) {
 
-  let testArray = [
-    {
-      id: 1,
-      name: "Grant",
-      age: 25
-    },
-    {
-      id: 2,
-      name: "Nelson",
-      age: 30
-    },
-    {
-      id: 3,
-      name: "Chelsea",
-      age: 25
-    },
-    {
-      id: 4,
-      name: "Guy",
-      age: 22
-    }
-  ]
+  
 
 
 
@@ -33,8 +12,8 @@ console.log(props.cards)
 
 
   const [searchQuery, setSearchQuery] = useState('');
-                                        // replace with props
-  const [searchResults, setSearchResults] = useState(testArray);
+  const [currentCard, setCurrCard] = useState('');                                    
+  const [searchResults, setSearchResults] = useState(props.cards);
 
   function handleChange(e){
     setSearchQuery(e.target.value);
@@ -43,11 +22,18 @@ console.log(props.cards)
 
   function getFilteredResults(query){
                 // replace test array with props
-    let results = testArray.filter((item) => {
+    let results = props.cards.filter((item) => {
       return item.name.toLowerCase().includes(query.toLowerCase());
     })
-    console.log(`this is the results of filter ${results}`);
+    // console.log(`this is the results of filter ${results}`);
     return results;
+  }
+
+  function displayCard(e){
+    console.log('div clicked')
+    console.log(e.target.imglink)
+    setCurrCard(e.target.imglink);
+    // document.querySelector('#cardDisplay') e.target.imglink
   }
 
   return (
@@ -55,9 +41,10 @@ console.log(props.cards)
       <form>
         <input type="text" value={searchQuery} placeholder='Search' onChange={handleChange}></input>
       </form>
-      {
-        searchResults.map((result)=>(<div age={`${result.age}`} key={result.id}>{result.name}</div>))
+      {                                                         //this is undefined,        // and maybe this too?
+        searchResults.map((result)=>(<div onClick={displayCard} imglink={result.image_url} key={result.id}>{result.name}</div>))
       }
+      <div id='cardDisplay'  style={{backgroundImage:`url(${currentCard})`, width: 500, height: 500, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}></div>
     </div>
   )
 }
