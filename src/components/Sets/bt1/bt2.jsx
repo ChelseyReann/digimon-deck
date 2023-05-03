@@ -9,23 +9,6 @@ export default function Bt2(user) {
   console.log(user.user.id);
   console.log(cards);
 
-  //   let article = { quantity: (prevState) => prevState + 1 };
-
-  //   const updateQuantity = async () => {
-  //     await axios.put(
-  //       `https://digimon-api.herokuapp.com/updateQuantity/${selectedCard.id}`,
-  //       article
-  //     );
-  //   };
-
-  const updateQuantity = async (cardId) => {
-    await axios.post("https://digimon-api.herokuapp.com/addCard", {
-      cardId: cardId,
-      userId: user.user.id,
-    });
-  };
-
-  let article1 = { quantity: (prevState) => prevState - 1 };
   const openModal = (e, card) => {
     e.preventDefault();
     setSelectedCard(card);
@@ -39,7 +22,7 @@ export default function Bt2(user) {
     await axios
       .delete(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
         cardId: cardId,
-        userId: user._id,
+        userId: user.id,
       })
       .then(console.log(cardId));
   };
@@ -72,7 +55,10 @@ export default function Bt2(user) {
     <div className="cards-container" onClick={closeModal}>
       {fullDeck?.map((card, index) => (
         <div
-          onClick={() => deleteCard(card._id)}
+          onClick={() => {
+            deleteCard(card._id);
+            alert(`${card.name} has been deleted from your deck!`);
+          }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
