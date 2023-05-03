@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./bt1.css";
+import DeckBuilder from "../../../screens/DeckBuilderPage";
+import PropTypes from "prop-types";
 
 export default function Bt1(props) {
   const [cards, setCards] = useState([]);
+  const [selectedCardForDb, setSelectedCardForDb] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
+
+  //   const { handleCardSelect } = props;
 
   const openModal = (e, card) => {
     e.preventDefault();
+    setSelectedCardForDb(card);
     setSelectedCard(card);
   };
 
@@ -15,16 +21,19 @@ export default function Bt1(props) {
     setSelectedCard(null);
   };
 
-  const cardSets = async () => {
-    //BT-01: Booster New Evolution
-    await axios
-      .get(`https://digimon-api.herokuapp.com/setname/${props.setname}`)
-      .then((res) => setCards(res.data));
-  };
-
   useEffect(() => {
+    const cardSets = async () => {
+      try {
+        const res = await axios.get(
+          `https://digimon-api.herokuapp.com/setname/${props.setname}`
+        );
+        setCards(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     cardSets();
-  }, []);
+  }, [props.setname]);
 
   useEffect(() => {
     if (selectedCard) {
@@ -35,9 +44,10 @@ export default function Bt1(props) {
   }, [selectedCard]);
 
   return (
-    <div className="cards-container">
+    <div className="cards-container" onClick={closeModal}>
       {cards.map((card, index) => (
         <div
+          onClick={() => props.handleCardSelect(card)}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
@@ -56,14 +66,36 @@ export default function Bt1(props) {
             <span className="close" onClick={closeModal}>
               &times;
             </span>
-            <h2>{selectedCard.name}</h2>
-            <img src={selectedCard.image_url} alt={selectedCard.name} />
-            <p>{selectedCard.type}</p>
-            <p>{selectedCard.color}</p>
-            <p>{selectedCard.stage}</p>
+            <h2 className="cardName">{selectedCard.name}</h2>
+            <img
+              className="cardImg"
+              src={selectedCard.image_url}
+              alt={selectedCard.name}
+            />
+            <ul className="cardData">
+              <li>{selectedCard.type}</li>
+              <li>{selectedCard.color}</li>
+              <li>{selectedCard.stage}</li>
+              <li>{selectedCard.digi_type}</li>
+              <li>{selectedCard.attribute}</li>
+              <li>{selectedCard.level}</li>
+              <li>{selectedCard.play_cost}</li>
+              <li>{selectedCard.evolution_cost}</li>
+              <li>{selectedCard.cardrarity}</li>
+              <li>{selectedCard.dp}</li>
+              <li>{selectedCard.cardnumber}</li>
+              <li>{selectedCard.set_name}</li>
+            </ul>
+            <p className="cardEffect">{selectedCard.maineffect}</p>
           </div>
         </div>
       )}
+
+      {selectedCardForDb && <DeckBuilder selectedCard={selectedCardForDb} />}
     </div>
   );
 }
+
+Bt1.propTypes = {
+  handleCardSelect: PropTypes.func.isRequired,
+};
