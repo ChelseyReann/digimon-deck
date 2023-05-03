@@ -17,9 +17,9 @@ export default function Bt1(props) {
         }, [])
 
   return (
-    <div className='cardContainer'>
+    <div className='cards-container'>
         {cards.map ((card, index) => (
-            <div key={index} className='card' style={{backgroundImage:`url(${card.image_url})`, backgroundSize: 'cover', height: 50, width: 50}}>{card.name}</div>
+            <div className="cards" key={index} style={{backgroundImage:`url(${card.image_url})`, color: 'transparent'}}>{card.name}</div>
         ))}
     </div>
   )

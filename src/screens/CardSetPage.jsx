@@ -1,10 +1,9 @@
-import React from 'react'
-import Bt1 from '../components/Sets/bt1'
+import React from "react";
+import Bt1 from "../components/Sets/bt1/bt1.jsx";
 
 export default function CardSetPage() {
   return (
     <div>
-      CardSetPage
       <h2>New Evolution</h2>
       <br />
       <Bt1 setname={"BT-01: Booster New Evolution"} />
