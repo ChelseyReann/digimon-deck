@@ -5,7 +5,7 @@
 
 body {
   background: linear-gradient(to bottom, #ADD8E6 55%, #FFAA33);
-  height: 100vh;
+  height: auto;
 }
 
 nav {
@@ -13,7 +13,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   background-color: blue;
   padding-bottom: .5rem;
   position: sticky;

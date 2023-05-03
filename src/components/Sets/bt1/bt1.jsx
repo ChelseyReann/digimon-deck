@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import "./bt1.css"
 
 
 export default function Bt1(props) {
@@ -16,9 +17,9 @@ export default function Bt1(props) {
         }, [])
 
   return (
-    <div>
+    <div className='cards-container'>
         {cards.map ((card, index) => (
-            <div key={index} style={{backgroundImage:`url(${card.image_url})`}}>{card.name}</div>
+            <div className="cards" key={index} style={{backgroundImage:`url(${card.image_url})`, color: 'transparent'}}>{card.name}</div>
         ))}
     </div>
   )
