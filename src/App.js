@@ -1,18 +1,20 @@
 import './App.css';
-import { verifyUser } from './services/users';
-import NavBar from "./components/NavBar"
-import Cards from './components/Cards';
-
-
-import {Links, Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Home from './screens/Home.jsx';
 import RulesPage from './screens/RulesPage.jsx';
 import CardSets from './screens/CardSetPage.jsx';
 import DeckBuilderPage from './screens/DeckBuilderPage.jsx';
-import SignUp from './screens/SignUpPage.jsx';
-import SignIn from './screens/SignInPage.jsx';
+import SignUp from './screens/SignUpPage/SignUpPage.jsx';
+import SignIn from './screens/SignInPage/SignInPage.jsx';
 import SignOut from './screens/SignOutPage.jsx';
+import { verifyUser } from './services/users.js';
+import NavBar from './components/NavBar';
+
+/*
+testing searchBar component
+ */
+import Search from "./components/Search.jsx"
 
 
 function App() {
@@ -30,9 +32,8 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <Cards />
-
+      <NavBar user={user}/>
+      
       <Routes>
         <Route path="/" element={<Home user={user}/>} />
         <Route path="/rules" element={<RulesPage/>}></Route>
@@ -43,6 +44,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn setUser={setUser}/>}/>
         <Route path="/sign-out" element={<SignOut setUser={setUser}/>} />
       </Routes>
+
     </>
   );
 }

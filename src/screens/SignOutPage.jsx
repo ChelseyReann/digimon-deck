@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { signOut } from '../services/users'
+import { signOut } from '../services/users.js'
 import { useNavigate } from 'react-router-dom'
 
 const SignOut = (props) => {

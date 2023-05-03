@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { signUp } from '../services/users'
+import './SignUpPage.css'
+import { signUp } from '../../services/users.js'
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = (props) => {
@@ -56,10 +57,10 @@ const SignUp = (props) => {
   const { username, email, password, passwordConfirmation } = form
 
   return (
-    <div className='form-container'>
+    <div className='form-container' id="form">
       <h3>Sign Up</h3>
       <form onSubmit={onSignUp}>
-        <label>Username</label>
+        <label>Username</label><br/>
         <input
           required
           type='text'
@@ -67,8 +68,8 @@ const SignUp = (props) => {
           value={username}
           placeholder='Enter username'
           onChange={handleChange}
-        />
-        <label>Email address</label>
+        /><br/><br/>
+        <label>Email address</label><br/>
         <input
           required
           type='email'
@@ -76,8 +77,8 @@ const SignUp = (props) => {
           value={email}
           placeholder='Enter email'
           onChange={handleChange}
-        />
-        <label>Password</label>
+        /><br/><br/>
+        <label>Password</label><br/>
         <input
           required
           name='password'
@@ -85,8 +86,8 @@ const SignUp = (props) => {
           type='password'
           placeholder='Password'
           onChange={handleChange}
-        />
-        <label>Password Confirmation</label>
+        /><br/><br/>
+        <label>Password Confirmation</label><br/>
         <input
           required
           name='passwordConfirmation'
@@ -94,7 +95,7 @@ const SignUp = (props) => {
           type='password'
           placeholder='Confirm Password'
           onChange={handleChange}
-        />
+        /><br/><br/>
         {renderError()}
       </form>
     </div>
