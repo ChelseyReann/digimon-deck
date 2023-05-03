@@ -1,7 +1,15 @@
-import React from 'react'
+import React from "react";
+import Bt2 from "../components/Sets/bt1/bt2.jsx";
+import selectedCard from "../components/Sets/bt1/bt2.jsx";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function DeckBuilderPage() {
+export default function DeckBuilder({ selectedCard, user }) {
   return (
-    <div>DeckBuilderPage</div>
-  )
+    <>
+      <div>
+        <Bt2 user={user} />
+      </div>
+    </>
+  );
 }

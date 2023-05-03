@@ -1,11 +1,31 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./bt1.css";
+import "./bt2.css";
 
-export default function Bt1({ user, setname }) {
+export default function Bt2(user) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
 
+  console.log(user.user.id);
+  console.log(cards);
+
+  //   let article = { quantity: (prevState) => prevState + 1 };
+
+  //   const updateQuantity = async () => {
+  //     await axios.put(
+  //       `https://digimon-api.herokuapp.com/updateQuantity/${selectedCard.id}`,
+  //       article
+  //     );
+  //   };
+
+  const updateQuantity = async (cardId) => {
+    await axios.post("https://digimon-api.herokuapp.com/addCard", {
+      cardId: cardId,
+      userId: user.user.id,
+    });
+  };
+
+  let article1 = { quantity: (prevState) => prevState - 1 };
   const openModal = (e, card) => {
     e.preventDefault();
     setSelectedCard(card);
@@ -15,18 +35,20 @@ export default function Bt1({ user, setname }) {
     setSelectedCard(null);
   };
 
-  const addCard = async (cardId) => {
-    await axios.post("https://digimon-api.herokuapp.com/addCard", {
-      cardId: cardId,
-      userId: user.id,
-    });
+  const deleteCard = async (cardId) => {
+    await axios
+      .delete(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
+        cardId: cardId,
+        userId: user._id,
+      })
+      .then(console.log(cardId));
   };
 
   useEffect(() => {
     const cardSets = async () => {
       try {
         const res = await axios.get(
-          `https://digimon-api.herokuapp.com/setname/${setname}`
+          `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
         );
         setCards(res.data);
       } catch (error) {
@@ -34,7 +56,7 @@ export default function Bt1({ user, setname }) {
       }
     };
     cardSets();
-  }, [setname]);
+  }, []);
 
   useEffect(() => {
     if (selectedCard) {
@@ -44,13 +66,13 @@ export default function Bt1({ user, setname }) {
     }
   }, [selectedCard]);
 
-  console.log(cards[0]);
+  const fullDeck = cards.deck1;
 
   return (
-    <div className="cards-container">
-      {cards.map((card, index) => (
+    <div className="cards-container" onClick={closeModal}>
+      {fullDeck?.map((card, index) => (
         <div
-          onClick={() => addCard(card._id)}
+          onClick={() => deleteCard(card._id)}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
@@ -94,6 +116,9 @@ export default function Bt1({ user, setname }) {
           </div>
         </div>
       )}
+      {/* {fullDeck?.map((card, index) => (
+        <p key={index}>{card.name}</p>
+      ))} */}
     </div>
   );
 }
