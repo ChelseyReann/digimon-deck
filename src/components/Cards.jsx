@@ -15,3 +15,5 @@ export default function Cards() {
     <div>
       <h1>{digimon}</h1>
     </div>
+  )
+}

@@ -1,9 +1,9 @@
-import api from './apiConfig'
+import axios from 'axios'
+import api from './apiConfig.js'
 import jwtDecode from 'jwt-decode'
-
 export const signUp = async (credentials) => {
   try {
-    const resp = await api.post('/sign-up', credentials)
+    const resp = await axios.post('https://digimon-api.herokuapp.com/sign-up', credentials)
     localStorage.setItem('token', resp.data.token)
     const user = jwtDecode(resp.data.token)
     return user
