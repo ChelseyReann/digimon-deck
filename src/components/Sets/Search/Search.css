@@ -1,0 +1,79 @@
+.parent {
+  display: grid;
+  grid-template-columns: .35fr 0 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.search-bar {
+    position: relative;
+    overflow: auto;
+    /* background-color: rgba(0, 0, 0, .5); */
+    color: white;
+    padding-top: 0; /* set to the height of the search-bar */
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+#dropdown {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input::placeholder {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.input-textbox, .input-textarea {
+  font-family : 'Courier New', Courier, monospace !important;
+}
+
+
+ .grant-form{
+    box-shadow:1px 1px 5px rgba(0, 0, 0, .5);
+
+    position: sticky; /* Add this */
+    top: 0; /* Add this */
+    background-color: rgba(0, 0, 0, .7);
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+ }
+
+ .search-results{
+    box-shadow:1px 1px 5px rgba(0, 0, 0, .5);
+    border: 1px black solid;
+    height: 28rem;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .4);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: .5rem;
+    /* position: relative; */
+ }
+
+.overflow{
+  /*test some code out here to pop out the search bar*/
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: 'pointer';
+    /* border: 1px black solid; */
+/*     
+    box-shadow:1px 1px 5px rgba(0, 0, 0, .5);
+    
+   
+    height: 400px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .5);
+    border-radius:3px;
+    color: white;
+
+    position: relative;
+  
+
+  */
+  
+
+  /* set to the height of the search-bar */
+}
