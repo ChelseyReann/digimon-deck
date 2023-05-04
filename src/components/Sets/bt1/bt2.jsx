@@ -25,20 +25,22 @@ export default function Bt2(user) {
         cardId: cardId,
         userId: user.user.id,
       })
-      .then(setToggle(!toggle));
+      .then(setToggle(!toggle))
+      .then(cardSets);
+  };
+
+  const cardSets = async () => {
+    try {
+      const res = await axios.get(
+        `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
+      );
+      setCards(res.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    const cardSets = async () => {
-      try {
-        const res = await axios.get(
-          `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
-        );
-        setCards(res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     cardSets();
   }, [toggle]);
 
@@ -66,7 +68,7 @@ export default function Bt2(user) {
             messageContainer.style.backgroundColor = "lightblue"
             messageContainer.style.maxWidth = "35%"
             messageContainer.style.borderRadius = "1rem"
-            messageContainer.style.border = "3px solid black"
+            messageContainer.style.border = "3px solid #2D2B2E"
             messageContainer.style.boxShadow = "6px 6px 8px #2D2B2E"
             const message = document.createElement("h3"); // Create a new <h3> element
             message.textContent = `${card.name} has been deleted from your deck!`; // Set the message
@@ -75,9 +77,9 @@ export default function Bt2(user) {
             setTimeout(() => {
               // Set a timeout of 3 seconds
               messageContainer.remove(); // Remove the container after the timeout
-            }, 1000);
+            }, 3000);
           }}
-           onContextMenu={(e) => openModal(e, card)}
+          onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
           r
@@ -121,8 +123,8 @@ export default function Bt2(user) {
         </div>
       )}
       {/* {fullDeck?.map((card, index) => (
-        <p key={index}>{card.name}</p>
-      ))} */}
+              <p key={index}>{card.name}</p>
+            ))} */}
     </div>
   );
 }
