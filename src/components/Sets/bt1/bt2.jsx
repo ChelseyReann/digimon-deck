@@ -5,27 +5,11 @@ import "./bt2.css";
 export default function Bt2(user) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   console.log(user.user.id);
   console.log(cards);
 
-  //   let article = { quantity: (prevState) => prevState + 1 };
-
-  //   const updateQuantity = async () => {
-  //     await axios.put(
-  //       `https://digimon-api.herokuapp.com/updateQuantity/${selectedCard.id}`,
-  //       article
-  //     );
-  //   };
-
-  const updateQuantity = async (cardId) => {
-    await axios.post("https://digimon-api.herokuapp.com/addCard", {
-      cardId: cardId,
-      userId: user.user.id,
-    });
-  };
-
-  let article1 = { quantity: (prevState) => prevState - 1 };
   const openModal = (e, card) => {
     e.preventDefault();
     setSelectedCard(card);
@@ -37,11 +21,11 @@ export default function Bt2(user) {
 
   const deleteCard = async (cardId) => {
     await axios
-      .delete(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
+      .put(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
         cardId: cardId,
-        userId: user._id,
+        userId: user.user.id,
       })
-      .then(console.log(cardId));
+      .then(setToggle(!toggle));
   };
 
   useEffect(() => {
@@ -56,7 +40,7 @@ export default function Bt2(user) {
       }
     };
     cardSets();
-  }, []);
+  }, [toggle]);
 
   useEffect(() => {
     if (selectedCard) {
@@ -72,7 +56,10 @@ export default function Bt2(user) {
     <div className="cards-container" onClick={closeModal}>
       {fullDeck?.map((card, index) => (
         <div
-          onClick={() => deleteCard(card._id)}
+          onClick={() => {
+            deleteCard(card._id);
+            alert(`${card.name} has been deleted from your deck!`);
+          }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}

@@ -50,7 +50,10 @@ export default function Bt1({ user, setname }) {
     <div className="cards-container">
       {cards.map((card, index) => (
         <div
-          onClick={() => addCard(card._id)}
+          onClick={() => {
+            addCard(card._id);
+            alert(`${card.name} has been added to your deck!`);
+          }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
           key={index}
