@@ -1,7 +1,7 @@
-import React from 'react'
-
 export default function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <h1>Banana Bunch <br /> Digi Deck Builder</h1>
+    </div>
   )
 }
