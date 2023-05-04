@@ -52,11 +52,19 @@ export default function Bt1({ user, setname }) {
         <div
         onClick={() => {
             addCard(card._id);
-            const message = document.createElement("h2"); // Create a new <h2> element
+            const messageContainer = document.createElement("div"); // Create a new <div> container element
+            messageContainer.style.position = "fixed"; // Set the position to fixed
+            messageContainer.style.top = "50%"; // Set the top to 50%
+            messageContainer.style.left = "50%"; // Set the left to 50%
+            messageContainer.style.transform = "translate(-50%, -50%)"; // Center the container horizontally and vertically
+            const message = document.createElement("h3"); // Create a new <h3> element
             message.textContent = `${card.name} has been added to your deck!`; // Set the message
-            document.div.append(message); // Add the <h2> element to the body of the document
-            setTimeout(() => { // Set a timeout of 3 seconds
-              message.remove(); // Remove the <h2> element after the timeout
+            messageContainer.appendChild(message); // Add the <h3> element to the container
+            document.body.appendChild(messageContainer); // Add the container to the body of the document
+            setTimeout(() => {
+              // Set a timeout of 3 seconds
+              messageContainer.remove(); // Remove the container after the timeout
+
             }, 3000);
           }}
           onContextMenu={(e) => openModal(e, card)}
