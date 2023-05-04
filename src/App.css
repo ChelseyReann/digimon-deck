@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Digimon Font";
+  src: url(../public/PixelDigivolve-mOm9.ttf);
+}
+
+body {
+  background-color: #ADD8E6;
+}
+
+/* body {
+  background: linear-gradient(to bottom, #ADD8E6 55%, #FFAA33);
+  height: auto;
+} */
+
+nav {
+  font-family: "Digimon Font";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 1.25rem;
+  background-color: blue;
+  padding-bottom: .5rem;
+  position: sticky;
+  top: 0px
+}
+
+nav a {
+  color: lightblue;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: "Digimon Font";
+  text-align: center;
+  font-size: 8rem;
+  color: #FFAA33;
+}
+
+/* .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 33rem;
+  width: 30rem;
+  filter: drop-shadow(5px 5px 10px black);
+  font-size: 1.3rem;
+  padding-top: 5rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  z-index: 100;
+  padding-left: 10px;
+} */
