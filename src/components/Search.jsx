@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Sets/Search/Search.css";
 
 export default function Search(props) {
+
   //have an empty object with a name attribute that just states that they havent searched for anything yet
   //also give it values for all the other things we can filter for
   const defaultObj = {
@@ -194,7 +195,6 @@ export default function Search(props) {
             marginLeft: "98%",
             marginTop: "20%",
             borderRadius: "1.5rem",
-            boxShadow: "8px 8px 10px #2d2b2e"
           }}
         >
          
