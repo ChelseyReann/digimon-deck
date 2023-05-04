@@ -10,10 +10,6 @@ import SignUp from './screens/SignUpPage/SignUpPage.jsx';
 import SignIn from './screens/SignInPage/SignInPage.jsx';
 import SignOut from './screens/SignOutPage.jsx';
 import { verifyUser } from './services/users.js';
-
-/*
-testing searchBar component
- */
 import Search from "./components/Search.jsx"
 import axios from 'axios';
 
