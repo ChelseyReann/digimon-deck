@@ -63,6 +63,11 @@ export default function Bt2(user) {
             messageContainer.style.top = "50%"; // Set the top to 50%
             messageContainer.style.left = "50%"; // Set the left to 50%
             messageContainer.style.transform = "translate(-50%, -50%)"; // Center the container horizontally and vertically
+            messageContainer.style.backgroundColor = "lightblue"
+            messageContainer.style.maxWidth = "35%"
+            messageContainer.style.borderRadius = "1rem"
+            messageContainer.style.border = "3px solid black"
+            messageContainer.style.boxShadow = "6px 6px 8px #2D2B2E"
             const message = document.createElement("h3"); // Create a new <h3> element
             message.textContent = `${card.name} has been deleted from your deck!`; // Set the message
             messageContainer.appendChild(message); // Add the <h3> element to the container
@@ -70,7 +75,15 @@ export default function Bt2(user) {
             setTimeout(() => {
               // Set a timeout of 3 seconds
               messageContainer.remove(); // Remove the container after the timeout
-            }, 3000);
+            }, 1000);
+          }}
+           onContextMenu={(e) => openModal(e, card)}
+          className="cards"
+          key={index}
+          r
+          style={{
+            backgroundImage: `url(${card.image_url})`,
+            color: "transparent",
           }}
         >
           {card.name}

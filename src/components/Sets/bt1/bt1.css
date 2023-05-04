@@ -22,7 +22,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px 20px;
-  padding: 0 1rem 0 7rem
+  padding: 1rem 1rem 0 7rem
 }
 
 h2 {
@@ -36,10 +36,11 @@ h2 {
 .close {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
+  padding-right: .5rem;
 }
 
 .modal {
@@ -99,9 +100,10 @@ li {
 
 .cardEffect {
   flex: 0 0 100%;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 1.2rem;
   font-family: 'Courier New', Courier, monospace;
   font-weight: 700;
   text-shadow: 2px 2px 15px white;
+  max-width: 100%;
 }
