@@ -1,9 +1,9 @@
 .parent {
-    display: grid;
-    grid-template-columns: repeat(2, .45fr) 1fr;
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+  display: grid;
+  grid-template-columns: .35fr 0 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
     
 .div1 { grid-area: 1 / 2 / 2 / 3; }
@@ -49,6 +49,11 @@
  
  }
 .overflow{
+  /*test some code out here to pop out the search bar*/
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: 'pointer';
     /* border: 1px black solid; */
 /*     
     box-shadow:1px 1px 5px rgba(0, 0, 0, .5);

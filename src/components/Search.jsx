@@ -19,7 +19,7 @@ export default function Search(props) {
   /* const [selectedCard, setSelect] = useState({}) */
   const [searchQuery, setSearchQuery] = useState("");
   const [currentCard, setCurrCard] = useState("");
-  const [currentFilter, setFilter] = useState("color");
+  const [currentFilter, setFilter] = useState("name");
   const [searchResults, setSearchResults] = useState(props.cards);
 
   function handleChange(e) {
@@ -129,11 +129,20 @@ export default function Search(props) {
     setFilter(e.target.value);
   }
 
+  function openUiButton(){
+
+  } 
+
   return (
     <div>
-      <div className="parent">
+      <div className="parent" onClick={openUiButton}>
         <div className="overflow">
         <div className='search-bar'>
+        
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.5 12L7.5 12" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.5 9L16.5 12L13.5 15" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
           <form>
             <input
               type="text"
@@ -142,7 +151,7 @@ export default function Search(props) {
               onChange={handleChange}
             ></input>
 
-            <label htmlFor="dropdown">Filter by:</label>
+            <label htmlFor="dropdown">Filter:</label>
             <select
               id="dropdown"
               value={currentFilter}
@@ -174,6 +183,7 @@ export default function Search(props) {
         </div>
 
         <div
+          key={currentCard._id}
           id="cardDisplay"
           style={{
             backgroundImage: `url(${currentCard})`,
@@ -183,7 +193,7 @@ export default function Search(props) {
             backgroundSize: "cover",
           }}
         >
-          <p>Name: {currentCard.name}</p> <p>Color:{currentCard.color}</p>
+         
         </div>
       </div>
     </div>

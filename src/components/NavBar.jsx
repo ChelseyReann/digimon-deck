@@ -11,6 +11,7 @@ export default function NavBar({user}) {
         <NavLink to="/cardsets" activeclassname="active-link">Card Sets</NavLink>
         <NavLink to="/deckbuilder" activeclassname="active-link">Deck Builder</NavLink>
         <NavLink to="deck" activeclassname="active-link">Deck</NavLink>
+        <NavLink to="/search" activeclassname="active-link">Search</NavLink>
         <NavLink to="/sign-up" activeclassname="active-link">Sign-up</NavLink>
         <NavLink to="/sign-in" activeclassname="active-link">Sign-in</NavLink>
 

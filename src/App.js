@@ -47,9 +47,9 @@ function App() {
         <Route path="/sign-up" element={<SignUp setUser={setUser}/>}/>
         <Route path="/sign-in" element={<SignIn setUser={setUser}/>}/>
         <Route path="/sign-out" element={<SignOut setUser={setUser}/>} />
+        <Route path='/search' element={<Search cards={cards}/>} />
       </Routes>
 
-    <Search cards={cards}></Search>
     </>
   );
 }
