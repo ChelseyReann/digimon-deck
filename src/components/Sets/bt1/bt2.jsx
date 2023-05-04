@@ -25,20 +25,22 @@ export default function Bt2(user) {
         cardId: cardId,
         userId: user.user.id,
       })
-      .then(setToggle(!toggle));
+      .then(setToggle(!toggle))
+      .then(cardSets);
+  };
+
+  const cardSets = async () => {
+    try {
+      const res = await axios.get(
+        `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
+      );
+      setCards(res.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    const cardSets = async () => {
-      try {
-        const res = await axios.get(
-          `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
-        );
-        setCards(res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     cardSets();
   }, [toggle]);
 
@@ -58,7 +60,24 @@ export default function Bt2(user) {
         <div
           onClick={() => {
             deleteCard(card._id);
-            alert(`${card.name} has been deleted from your deck!`);
+            const messageContainer = document.createElement("div"); // Create a new <div> container element
+            messageContainer.style.position = "fixed"; // Set the position to fixed
+            messageContainer.style.top = "50%"; // Set the top to 50%
+            messageContainer.style.left = "50%"; // Set the left to 50%
+            messageContainer.style.transform = "translate(-50%, -50%)"; // Center the container horizontally and vertically
+            messageContainer.style.backgroundColor = "lightblue";
+            messageContainer.style.maxWidth = "35%";
+            messageContainer.style.borderRadius = "1rem";
+            messageContainer.style.border = "3px solid #2D2B2E";
+            messageContainer.style.boxShadow = "6px 6px 8px #2D2B2E";
+            const message = document.createElement("h3"); // Create a new <h3> element
+            message.textContent = `${card.name} has been deleted from your deck!`; // Set the message
+            messageContainer.appendChild(message); // Add the <h3> element to the container
+            document.body.appendChild(messageContainer); // Add the container to the body of the document
+            setTimeout(() => {
+              // Set a timeout of 3 seconds
+              messageContainer.remove(); // Remove the container after the timeout
+            }, 1000);
           }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
@@ -86,26 +105,26 @@ export default function Bt2(user) {
               alt={selectedCard.name}
             />
             <ul className="cardData">
-              <li>{selectedCard.type}</li>
-              <li>{selectedCard.color}</li>
-              <li>{selectedCard.stage}</li>
-              <li>{selectedCard.digi_type}</li>
-              <li>{selectedCard.attribute}</li>
-              <li>{selectedCard.level}</li>
-              <li>{selectedCard.play_cost}</li>
-              <li>{selectedCard.evolution_cost}</li>
-              <li>{selectedCard.cardrarity}</li>
-              <li>{selectedCard.dp}</li>
-              <li>{selectedCard.cardnumber}</li>
-              <li>{selectedCard.set_name}</li>
+              <li>Type: {selectedCard.type}</li>
+              <li>Color: {selectedCard.color}</li>
+              <li>Stage: {selectedCard.stage}</li>
+              <li>Digi-Type: {selectedCard.digi_type}</li>
+              <li>Attribute: {selectedCard.attribute}</li>
+              <li>Level: {selectedCard.level}</li>
+              <li>Play Cost: {selectedCard.play_cost}</li>
+              <li>Evolution Cost: {selectedCard.evolution_cost}</li>
+              <li>Card Rarity: {selectedCard.cardrarity}</li>
+              <li>DP: {selectedCard.dp}</li>
+              <li>Card Number:{selectedCard.cardnumber}</li>
+              <li>Set Name: {selectedCard.set_name}</li>
             </ul>
             <p className="cardEffect">{selectedCard.maineffect}</p>
           </div>
         </div>
       )}
       {/* {fullDeck?.map((card, index) => (
-        <p key={index}>{card.name}</p>
-      ))} */}
+              <p key={index}>{card.name}</p>
+            ))} */}
     </div>
   );
 }

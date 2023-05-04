@@ -1,8 +1,8 @@
 .cards {
     background-repeat: no-repeat;
     background-size: contain;
-    width: 10rem;
-    height: 14rem;
+    width: 9.6rem;
+    height: 13.3rem;
     box-shadow: 8px 8px 10px #2D2B2E;
   
     -webkit-transition: all 1s ease;
@@ -13,7 +13,7 @@
   }
   
   .cards:hover {
-    width: 11.5rem;
+    width: 11.1rem;
     height: 15.5rem;
   }
   
