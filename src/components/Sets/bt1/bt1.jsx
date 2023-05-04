@@ -80,18 +80,18 @@ export default function Bt1({ user, setname }) {
               alt={selectedCard.name}
             />
             <ul className="cardData">
-              <li>{selectedCard.type}</li>
-              <li>{selectedCard.color}</li>
-              <li>{selectedCard.stage}</li>
-              <li>{selectedCard.digi_type}</li>
-              <li>{selectedCard.attribute}</li>
-              <li>{selectedCard.level}</li>
-              <li>{selectedCard.play_cost}</li>
-              <li>{selectedCard.evolution_cost}</li>
-              <li>{selectedCard.cardrarity}</li>
-              <li>{selectedCard.dp}</li>
-              <li>{selectedCard.cardnumber}</li>
-              <li>{selectedCard.set_name}</li>
+              <li>Type: {selectedCard.type}</li>
+              <li>Color: {selectedCard.color}</li>
+              <li>Stage: {selectedCard.stage}</li>
+              <li>Digi-Type: {selectedCard.digi_type}</li>
+              <li>Attribute: {selectedCard.attribute}</li>
+              <li>Level: {selectedCard.level}</li>
+              <li>Play Cost: {selectedCard.play_cost}</li>
+              <li>Evolution Cost: {selectedCard.evolution_cost}</li>
+              <li>Card Rarity: {selectedCard.cardrarity}</li>
+              <li>DP: {selectedCard.dp}</li>
+              <li>Card Number:{selectedCard.cardnumber}</li>
+              <li>Set Name: {selectedCard.set_name}</li>
             </ul>
             <p className="cardEffect">{selectedCard.maineffect}</p>
           </div>

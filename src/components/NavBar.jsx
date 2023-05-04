@@ -17,12 +17,9 @@ export default function NavBar({ user }) {
       </NavLink>
       {user ? (
         <NavLink to={`/deck1/${user.id}`} activeclassname="active-link">
-          Deck Builder
+           Deck
         </NavLink>
       ) : null}
-      <NavLink to="deck" activeclassname="active-link">
-        Deck
-      </NavLink>
       <NavLink to="/sign-up" activeclassname="active-link">
         Sign-up
       </NavLink>
