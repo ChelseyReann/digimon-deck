@@ -44,8 +44,6 @@ export default function Bt1({ user, setname }) {
     }
   }, [selectedCard]);
 
-  console.log(cards[0]);
-
   return (
     <div className="cards-container">
       {cards.map((card, index) => (
@@ -57,6 +55,11 @@ export default function Bt1({ user, setname }) {
             messageContainer.style.top = "50%"; // Set the top to 50%
             messageContainer.style.left = "50%"; // Set the left to 50%
             messageContainer.style.transform = "translate(-50%, -50%)"; // Center the container horizontally and vertically
+            messageContainer.style.backgroundColor = "lightblue";
+            messageContainer.style.maxWidth = "35%";
+            messageContainer.style.borderRadius = "1rem";
+            messageContainer.style.border = "3px solid #2D2B2E";
+            messageContainer.style.boxShadow = "6px 6px 8px #2D2B2E";
             const message = document.createElement("h3"); // Create a new <h3> element
             message.textContent = `${card.name} has been added to your deck!`; // Set the message
             messageContainer.appendChild(message); // Add the <h3> element to the container
@@ -64,7 +67,7 @@ export default function Bt1({ user, setname }) {
             setTimeout(() => {
               // Set a timeout of 3 seconds
               messageContainer.remove(); // Remove the container after the timeout
-            }, 3000);
+            }, 1000);
           }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
