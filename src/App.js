@@ -10,6 +10,7 @@ import SignUp from "./screens/SignUpPage/SignUpPage.jsx";
 import SignIn from "./screens/SignInPage/SignInPage.jsx";
 import SignOut from "./screens/SignOutPage.jsx";
 import { verifyUser } from "./services/users.js";
+import axios from "axios";
 
 /*
 testing searchBar component
@@ -19,6 +20,12 @@ import Bt2 from "./components/Sets/bt1/bt2";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [cards, setCards] = useState([])
+
+  const getInfo = async() =>{
+    axios.get('https://digimon-api.herokuapp.com/')
+    .then((res)=>setCards(res.data))
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,6 +33,7 @@ function App() {
       user ? setUser(user) : setUser(null);
     };
     fetchUser();
+    getInfo()
   }, []);
 
   console.log(user);
@@ -44,6 +52,7 @@ function App() {
             element={<DeckBuilderPage user={user} />}
           />
         ) : null}
+        <Route path='/search' element={<Search cards={cards}/>} />
         <Route path="/sign-up" element={<SignUp setUser={setUser} />} />
         <Route path="/sign-in" element={<SignIn setUser={setUser} />} />
         <Route path="/sign-out" element={<SignOut setUser={setUser} />} />

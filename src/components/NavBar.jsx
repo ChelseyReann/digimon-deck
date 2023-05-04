@@ -14,11 +14,10 @@ export default function NavBar({ user }) {
            Deck
         </NavLink>
       ) : null}
+      <NavLink to="/search" activeclassname="active-link">Search</NavLink>
       {user? (
         <NavLink to="/sign-out" activeclassname="active-link">Sign-out</NavLink>
       ): <NavLink to="/sign-in" activeclassname="active-link">Sign-in</NavLink>}
-      
-      
     </nav>
   );
 }
