@@ -30,7 +30,6 @@ input::placeholder {
 
  .grant-form{
     box-shadow:1px 1px 5px rgba(0, 0, 0, .5);
-
     position: sticky; /* Add this */
     top: 0; /* Add this */
     background-color: rgba(0, 0, 0, .7);
@@ -51,6 +50,10 @@ input::placeholder {
     padding-left: .5rem;
     /* position: relative; */
  }
+
+ .selectedCard {
+  box-shadow: 8px 8px 10px #2d2b2e;
+}
 
 .overflow{
   /*test some code out here to pop out the search bar*/
