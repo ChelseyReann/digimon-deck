@@ -143,7 +143,7 @@ export default function Search(props) {
         <path d="M16.5 12L7.5 12" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M13.5 9L16.5 12L13.5 15" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-          <form>
+          <form className="grant-form">
             <input
               type="text"
               value={searchQuery}
@@ -187,10 +187,14 @@ export default function Search(props) {
           id="cardDisplay"
           style={{
             backgroundImage: `url(${currentCard})`,
-            width: 500,
-            height: 500,
+            width: "30rem",
+            height: "40rem",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            marginLeft: "98%",
+            marginTop: "20%",
+            borderRadius: "1.5rem",
+            boxShadow: "8px 8px 10px #2d2b2e"
           }}
         >
          
