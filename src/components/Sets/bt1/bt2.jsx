@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./bt1.css";
+import "./bt2.css";
 
-export default function Bt1({ user, setname }) {
+export default function Bt2(user) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [toggle, setToggle] = useState(false);
+
+  console.log(user.user.id);
+  console.log(cards);
 
   const openModal = (e, card) => {
     e.preventDefault();
@@ -15,18 +19,20 @@ export default function Bt1({ user, setname }) {
     setSelectedCard(null);
   };
 
-  const addCard = async (cardId) => {
-    await axios.post("https://digimon-api.herokuapp.com/addCard", {
-      cardId: cardId,
-      userId: user.id,
-    });
+  const deleteCard = async (cardId) => {
+    await axios
+      .put(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
+        cardId: cardId,
+        userId: user.user.id,
+      })
+      .then(setToggle(!toggle));
   };
 
   useEffect(() => {
     const cardSets = async () => {
       try {
         const res = await axios.get(
-          `https://digimon-api.herokuapp.com/setname/${setname}`
+          `https://digimon-api.herokuapp.com/deck1/${user.user.id}`
         );
         setCards(res.data);
       } catch (error) {
@@ -34,7 +40,7 @@ export default function Bt1({ user, setname }) {
       }
     };
     cardSets();
-  }, [setname]);
+  }, [toggle]);
 
   useEffect(() => {
     if (selectedCard) {
@@ -44,15 +50,15 @@ export default function Bt1({ user, setname }) {
     }
   }, [selectedCard]);
 
-  console.log(cards[0]);
+  const fullDeck = cards.deck1;
 
   return (
-    <div className="cards-container">
-      {cards.map((card, index) => (
+    <div className="cards-container" onClick={closeModal}>
+      {fullDeck?.map((card, index) => (
         <div
           onClick={() => {
-            addCard(card._id);
-            alert(`${card.name} has been added to your deck!`);
+            deleteCard(card._id);
+            alert(`${card.name} has been deleted from your deck!`);
           }}
           onContextMenu={(e) => openModal(e, card)}
           className="cards"
@@ -97,6 +103,9 @@ export default function Bt1({ user, setname }) {
           </div>
         </div>
       )}
+      {/* {fullDeck?.map((card, index) => (
+        <p key={index}>{card.name}</p>
+      ))} */}
     </div>
   );
 }
