@@ -19,7 +19,19 @@ export default function Search(props) {
   // console.log(props.cards)
   /* const [selectedCard, setSelect] = useState({}) */
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentCard, setCurrCard] = useState("");
+  const [currentCard, setCurrCard] = useState("")
+  const [currentName, setCurrName] = useState("")
+  const [currentColor, setCurrColor] = useState("")
+  const [currentType, setCurrType] = useState("")
+  const [currentAttribute, setCurrAttribute] = useState("")
+  const [currentLevel, setCurrLevel] = useState("")
+  const [currentPlayCost, setCurrPlayCost] = useState("");
+  const [currentEvolutionCost, setCurrEvolutionCost] = useState("");
+  const [currentDp, setCurrDp] = useState("");
+  const [currentCardNumber, setCurrCardNumber] = useState("");
+  const [currentMainEffect, setCurrMainEffect] = useState("");
+  const [currentSourceEffect, setCurrSourceEffect] = useState("");
+  const [currentSetName, setCurrSetName] = useState("");
   const [currentFilter, setFilter] = useState("name");
   const [searchResults, setSearchResults] = useState(props.cards);
 
@@ -122,6 +134,19 @@ export default function Search(props) {
 
   function displayCard(event) {
     setCurrCard(event.target.getAttribute("customimglink"));
+    setCurrName(event.target.getAttribute("customName"));
+    setCurrColor(event.target.getAttribute("customColor"));
+    setCurrType(event.target.getAttribute("customType"));
+    setCurrAttribute(event.target.getAttribute("customAttribute"));
+    setCurrLevel(event.target.getAttribute("customLevel"));
+    setCurrPlayCost(event.target.getAttribute("customPlayCost"));
+    setCurrEvolutionCost(event.target.getAttribute("customEvolutionCost"));
+    setCurrDp(event.target.getAttribute("customDp"));
+    setCurrCardNumber(event.target.getAttribute("customCardNumber"));
+    setCurrMainEffect(event.target.getAttribute("customMainEffect"));
+    setCurrSourceEffect(event.target.getAttribute("customSourceEffect"));
+    setCurrSetName(event.target.getAttribute("customSetName"));
+
     // console.log(event.target.getAttribute('customimglink'));
     // console.log(currentCard, "this is the value of currentCard");
   }
@@ -174,6 +199,18 @@ export default function Search(props) {
                   className="result"
                   onClick={displayCard}
                   customimglink={`${result.image_url}`}
+                  customName={`${result.name}`}
+                  customColor={`${result.color}`}
+                  customType={`${result.type}`}
+                  customAttribute={`${result.attribute}`}
+                  customLevel={`${result.level}`}
+                  customPlayCost={`${result.play_cost}`}
+                  customEvolutionCost={`${result.evolution_cost}`}
+                  customDp={`${result.dp}`}
+                  customCardNumber={`${result.cardnumber}`}
+                  customMainEffect={`${result.maineffect}`}
+                  customSourceEffect={`${result.sourceeffect}`}
+                  customSetName={`${result.set_name}`}
                   key={result._id}
                 >
                   {result.name}
@@ -198,6 +235,20 @@ export default function Search(props) {
           }}
         >
          
+        </div>
+        <div className="currentCardInfo">
+          {currentName}
+          {currentColor}
+          {currentType}
+          {currentAttribute}
+          {currentLevel}
+          {currentPlayCost}
+          {currentEvolutionCost}
+          {currentDp}
+          {currentCardNumber}
+          {currentMainEffect}
+          {currentSourceEffect}
+          {currentSetName}
         </div>
       </div>
     </div>
