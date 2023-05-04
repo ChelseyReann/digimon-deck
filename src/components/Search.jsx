@@ -16,7 +16,7 @@ export default function Search(props) {
   };
   const defaultArr = [];
   defaultArr.push(defaultObj);
-  // console.log(props.cards)
+ 
   /* const [selectedCard, setSelect] = useState({}) */
   const [searchQuery, setSearchQuery] = useState("");
   const [currentCard, setCurrCard] = useState("");
@@ -122,8 +122,6 @@ export default function Search(props) {
 
   function displayCard(event) {
     setCurrCard(event.target.getAttribute("customimglink"));
-    // console.log(event.target.getAttribute('customimglink'));
-    // console.log(currentCard, "this is the value of currentCard");
   }
 
   function handleSelectChange(e) {
@@ -159,16 +157,12 @@ export default function Search(props) {
               onChange={handleSelectChange}
             >
               <option value="name">name</option>
-              {/* <option value="play_cost">play cost</option> */}
               <option value="color">color</option>
-              {/* <option value="level">level</option> */}
-              {/* <option value="carcardrarityd">card rarity</option> */}
             </select>
           </form>
         </div>
           <div className='search-results' style={{paddingTop: '10px'}}>
             {
-              //this is undefined,        // and maybe this too?
               searchResults.map((result) => (
                 <p
                   className="result"
@@ -188,12 +182,12 @@ export default function Search(props) {
           id="cardDisplay"
           style={{
             backgroundImage: `url(${currentCard})`,
-            width: "30rem",
-            height: "40rem",
+            width: "25rem",
+            height: "35rem",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            marginLeft: "98%",
-            marginTop: "20%",
+            marginLeft: "150%",
+            marginTop: "30%",
             borderRadius: "1.5rem",
           }}
         >
