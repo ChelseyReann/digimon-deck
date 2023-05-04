@@ -5,6 +5,7 @@ import "./bt2.css";
 export default function Bt2(user) {
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   console.log(user.user.id);
   console.log(cards);
@@ -20,11 +21,11 @@ export default function Bt2(user) {
 
   const deleteCard = async (cardId) => {
     await axios
-      .delete(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
+      .put(`https://digimon-api.herokuapp.com/deleteCard/${cardId}`, {
         cardId: cardId,
-        userId: user.id,
+        userId: user.user.id,
       })
-      .then(console.log(cardId));
+      .then(setToggle(!toggle));
   };
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Bt2(user) {
       }
     };
     cardSets();
-  }, []);
+  }, [toggle]);
 
   useEffect(() => {
     if (selectedCard) {
