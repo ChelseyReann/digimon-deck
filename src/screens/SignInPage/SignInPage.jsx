@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './SignInPage.css'
 import { signIn } from '../../services/users.js'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 
 const SignIn = (props) => {
   const navigate = useNavigate()
@@ -77,6 +77,7 @@ const SignIn = (props) => {
         /><br/><br/>
         {renderError()}
       </form>
+      <p>Don't have an account? Make one <Link to="/sign-up">here!</Link></p>
     </div>
   )
 }

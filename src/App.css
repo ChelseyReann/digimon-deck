@@ -41,8 +41,16 @@ h1 {
   padding-top: 7%;
 }
 
+h3 {
+  font-family: "Digimon Font";
+  text-align: center;
+  color:blue;
+  font-size: 2rem;
+  padding-bottom: 0;
+}
+
 .video {
-  margin: 10% 0 0 25%;
+  margin: 4% 0 0 25%;
 }
 
 .welcome {
