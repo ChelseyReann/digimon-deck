@@ -1,6 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import "./Sets/Search/Search.css";
 
 export default function Search(props) {
@@ -16,7 +15,7 @@ export default function Search(props) {
   };
   const defaultArr = [];
   defaultArr.push(defaultObj);
-  // console.log(props.cards)
+ 
   /* const [selectedCard, setSelect] = useState({}) */
   const [searchQuery, setSearchQuery] = useState("");
   const [currentCard, setCurrCard] = useState("")
@@ -164,11 +163,6 @@ export default function Search(props) {
       <div className="parent" onClick={openUiButton}>
         <div className="overflow">
         <div className='search-bar'>
-        
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.5 12L7.5 12" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M13.5 9L16.5 12L13.5 15" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
           <form className="grant-form">
             <input
               type="text"
@@ -184,16 +178,12 @@ export default function Search(props) {
               onChange={handleSelectChange}
             >
               <option value="name">name</option>
-              {/* <option value="play_cost">play cost</option> */}
               <option value="color">color</option>
-              {/* <option value="level">level</option> */}
-              {/* <option value="carcardrarityd">card rarity</option> */}
             </select>
           </form>
         </div>
           <div className='search-results' style={{paddingTop: '10px'}}>
             {
-              //this is undefined,        // and maybe this too?
               searchResults.map((result) => (
                 <p
                   className="result"
@@ -220,36 +210,38 @@ export default function Search(props) {
           </div>
         </div>
 
+         <div className="currentCardInfo">
+          <p>Name: {currentName}</p>
+          <p>Color: {currentColor}</p>
+          <p>Type: {currentType}</p>
+          <p>Attribute: {currentAttribute}</p>
+          <p>Level: {currentLevel}</p>
+          <p>Play Cost: {currentPlayCost}</p>
+          <p>Evolution Cost: {currentEvolutionCost}</p>
+          <p>DP: {currentDp}</p>
+          <p>Card Number: {currentCardNumber}</p>
+          <p>Main Effect: {currentMainEffect}</p>
+          <p>Source Effect: {currentSourceEffect}</p>
+          <p>Set Name: {currentSetName}</p>
+        </div>
+
         <div
           key={currentCard._id}
           id="cardDisplay"
           style={{
             backgroundImage: `url(${currentCard})`,
-            width: "30rem",
-            height: "40rem",
+            width: "18rem",
+            height: "25rem",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            marginLeft: "98%",
-            marginTop: "20%",
+            // marginLeft: "35%",
+            marginTop: "6%",
             borderRadius: "1.5rem",
           }}
         >
          
         </div>
-        <div className="currentCardInfo">
-          {currentName}
-          {currentColor}
-          {currentType}
-          {currentAttribute}
-          {currentLevel}
-          {currentPlayCost}
-          {currentEvolutionCost}
-          {currentDp}
-          {currentCardNumber}
-          {currentMainEffect}
-          {currentSourceEffect}
-          {currentSetName}
-        </div>
+       
       </div>
     </div>
   );
