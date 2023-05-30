@@ -90,4 +90,21 @@
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 576px) {
+    .cards {
+      width: 6.6rem;
+      height: 9.3rem;
+    }
+
+    .cards:active {
+      width: 8.3rem;
+      height: 11.1rem
+    }
+
+    .cards-container {
+      padding: 0;
+      padding-left: .3rem;
+    }
+  }
   
